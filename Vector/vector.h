@@ -158,7 +158,7 @@ public:
 
         increase_capacity();
 
-        for(int i = size-1; i > position; i++)
+        for(int i = size-1; i > position; i--)
         {
             data[i] = data[i-1];
         }
@@ -176,15 +176,10 @@ public:
         if(position > size)
            throw std::out_of_range("position out of range");
 
-        T* temp = new T[capacity];
-
         for(size_t i = position; i < size; i++)
         {
             data[i] = data[i+1];
         }
-
-        delete[] data;
-        data = temp;
 
         size--;
         shrink_to_fit();
